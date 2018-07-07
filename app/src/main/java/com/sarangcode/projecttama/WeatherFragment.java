@@ -59,7 +59,7 @@ public class WeatherFragment extends Fragment implements
     private RecyclerView mRecyclerView;
     private int mPosition = RecyclerView.NO_POSITION;
 
-    //private ProgressBar mLoadingIndicator;
+    private ProgressBar mLoadingIndicator;
 
 
 
@@ -80,14 +80,14 @@ public class WeatherFragment extends Fragment implements
         View rootview=inflater.inflate(R.layout.fragment_weather_layout, container, false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setElevation(0f);
         mRecyclerView = rootview.findViewById(R.id.recyclerview_forecast);
-        //mLoadingIndicator = rootview.findViewById(R.id.pb_loading_indicator);
+        mLoadingIndicator = rootview.findViewById(R.id.pb_loading_indicator);
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
         mForecastAdapter = new com.sarangcode.projecttama.ForecastAdapter(getContext(), this);
         mRecyclerView.setAdapter(mForecastAdapter);
-       showLoading();
+        showLoading();
 
         getActivity().getSupportLoaderManager().initLoader(ID_FORECAST_LOADER, null, this);
 
@@ -196,7 +196,7 @@ public class WeatherFragment extends Fragment implements
      */
     private void showWeatherDataView() {
         /* First, hide the loading indicator */
-//        mLoadingIndicator.setVisibility(View.INVISIBLE);
+       mLoadingIndicator.setVisibility(View.INVISIBLE);
         /* Finally, make sure the weather data is visible */
         mRecyclerView.setVisibility(View.VISIBLE);
     }
@@ -212,7 +212,7 @@ public class WeatherFragment extends Fragment implements
         /* Then, hide the weather data */
         mRecyclerView.setVisibility(View.INVISIBLE);
         /* Finally, show the loading indicator */
-        //mLoadingIndicator.setVisibility(View.VISIBLE);
+        mLoadingIndicator.setVisibility(View.VISIBLE);
     }
 
 

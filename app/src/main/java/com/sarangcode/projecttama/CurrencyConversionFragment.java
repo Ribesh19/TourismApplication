@@ -100,7 +100,6 @@ public class CurrencyConversionFragment extends Fragment {
             public void onClick(View v) {
 
                 input=Float.valueOf(input_value.getText().toString());
-                if(input!=0) {
                     switch (country) {
                         case "USD":
                             result = input * 107.72;
@@ -129,11 +128,6 @@ public class CurrencyConversionFragment extends Fragment {
                             break;
 
 
-                    }
-                }
-                else
-                    {
-                        Toast.makeText(getContext(),"Enter some Value",Toast.LENGTH_SHORT).show();
                     }
                 result_textview.setText("NRS "+result.toString());
                 }
